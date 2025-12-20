@@ -3,55 +3,57 @@
 {% block content %}
 <main class="flex-grow-1">
     <div class="container-lg mt-3">
-        <h1>{{ name }}</h1>
+        <h1 class="mb-3">{{ name }}</h1>
         <div class="table-responsive">
-            <table class="table table-bordered table-hover text-nowrap" data-test="url">
+            <table class="table table-bordered table-hover" data-test="url">
                 <tbody>
                     <tr>
-                        <td>ID</td>
-                        <td>{{ id }}</td>
+                        <td class="text-nowrap">ID</td>
+                        <td class="text-nowrap">{{ id }}</td>
                     </tr>
                     <tr>
-                        <td>Имя</td>
-                        <td>{{ name }}</td>
+                        <td class="text-nowrap">Имя</td>
+                        <td class="text-break">{{ name }}</td>
                     </tr>
                     <tr>
-                        <td>Дата создания</td>
-                        <td>{{ created_at }}</td>
+                        <td class="text-nowrap">Дата создания</td>
+                        <td class="text-nowrap">{{ created_at }}</td>
                     </tr>
                     </tbody>
             </table>
         </div>
 
-        <h2 class="mt-5 mb-3">Проверки</h2>
-        <form method="post" action="/urls/{{ id }}/checks">
+        <h2 class="mt-4 mt-md-5 mb-3">Проверки</h2>
+        <form method="post" action="/urls/{{ id }}/checks" class="mb-3">
             <input type="submit" class="btn btn-primary" value="Запустить проверку">
         </form>
         <div>
-            <table class="table table-bordered table-hover mt-2" data-test="checks">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Код ответа</th>
-                        <th>h1</th>
-                        <th>title</th>
-                        <th>description</th>
-                        <th>Дата создания</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for check in checks %}
-                    <tr>
-                        <td>{{ check.id }}</td>
-                        <td>{{ check.status_code }}</td>
-                        <td>{{ check.h1 }}</td>
-                        <td>{{ check.title }}</td>
-                        <td>{{ check.description }}</td>
-                        <td>{{ check.created_at }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-test="checks">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Код ответа</th>
+                            <th>h1</th>
+                            <th>title</th>
+                            <th>description</th>
+                            <th>Дата создания</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for check in checks %}
+                        <tr>
+                            <td class="text-nowrap">{{ check.id }}</td>
+                            <td class="text-nowrap">{{ check.status_code }}</td>
+                            <td class="text-break">{{ check.h1 or '' }}</td>
+                            <td class="text-break">{{ check.title or '' }}</td>
+                            <td class="text-break">{{ check.description or '' }}</td>
+                            <td class="text-nowrap">{{ check.created_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </main>

@@ -5,12 +5,14 @@
   <div class="container-lg mt-3">
     <h1></h1>
     <div class="row">
-        <div class="col-12 col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-5">
-          <h1 class="display-3">Анализатор страниц</h1>
-          <p class="lead">Бесплатно проверяйте сайты на SEO-пригодность</p>
-          <form action="{{ url_for('urls_post') }}" method="post" class="d-flex justify-content-center" required>
-            <input type="text" name="url" placeholder="https://www.example.com"value=""  class="form-control form-control-lg">
-            <input type="submit" class="btn btn-primary  btn-lg ms-3 px-5 text-uppercase mx-3" value="Проверить">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-3 p-md-5">
+          <h1 class="display-3 text-center">Анализатор страниц</h1>
+          <p class="lead text-center">Бесплатно проверяйте сайты на SEO-пригодность</p>
+          <form action="{{ url_for('urls_post') }}" method="post" class="mt-4" required>
+            <div class="d-flex flex-column flex-md-row gap-2 gap-md-3">
+              <input type="text" name="url" placeholder="https://www.example.com" class="form-control form-control-lg flex-grow-1">
+              <input type="submit" class="btn btn-primary btn-lg text-uppercase flex-shrink-0" style="min-width: 140px;" value="Проверить">
+            </div>
         </form>
         </div>
       </div>
