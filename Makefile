@@ -20,6 +20,30 @@ start:
 lint:
 	poetry run flake8 page_analyzer/
 
+test:
+	poetry run pytest
+
+test-unit:
+	poetry run pytest -m unit
+
+test-integration:
+	poetry run pytest -m integration
+
+test-coverage:
+	poetry run pytest --cov=page_analyzer --cov-report=html --cov-report=term
+
+test-watch:
+	poetry run pytest --watch
+
+test-verbose:
+	poetry run pytest -v
+
+test-failed:
+	poetry run pytest --lf
+
+test-xfailed:
+	poetry run pytest --runxfail
+
 package-install:
 	python3 -m pip install --force-reinstall --user dist/*.whl
 

@@ -4,5 +4,7 @@
 **/dist
 **/.coverage
 **/coverage.xml
+**/htmlcov/
+.pytest_cache/
 .env
 todo.txt
