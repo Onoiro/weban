@@ -20,7 +20,7 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false
 
 # Install dependencies
-RUN poetry install
+RUN poetry install --no-root --no-interaction --no-ansi
 
 COPY page_analyzer/ ./page_analyzer/
 COPY database.sql ./
