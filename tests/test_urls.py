@@ -35,9 +35,9 @@ class TestUrlValidation:
         """Тест валидации корректного URL"""
         valid_urls = [
             "https://example.com",
-            "http://example.com",
+            "http://example.com", # NOSONAR - test data for check valid url
             "https://www.example.com/path?query=value",
-            "http://subdomain.example.org"
+            "http://subdomain.example.org" # NOSONAR - test data for check valid url
         ]
         for url in valid_urls:
             assert not validate_url(url), f"URL {url} должен быть валидным"
@@ -48,7 +48,7 @@ class TestUrlValidation:
             "not-a-url",
             "",
             "just_text",
-            "http://",
+            "http://", # NOSONAR - test data for check valid url
             "https://",
             "example.com"
         ]
@@ -63,8 +63,8 @@ class TestUrlValidation:
 
     def test_normalize_url_with_http(self):
         """Тест нормализации URL с HTTP"""
-        url = "http://example.com/path?query=value"
-        expected = "http://example.com"
+        url = "http://example.com/path?query=value" # NOSONAR - test data
+        expected = "http://example.com" # NOSONAR - test data
         assert normalize_url(url) == expected
 
     def test_normalize_url_with_www(self):
