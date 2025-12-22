@@ -21,21 +21,21 @@ page-analyzer = "page_analyzer.app:app"
 [tool.poetry.dependencies]
 python = "^3.11"
 flask = "^2.3.2"
-gunicorn = "^20.1.0"
+gunicorn = "^23.0"
 psycopg2-binary = "^2.9.6"
 python-dotenv = "^1.0.0"
-validators = "^0.20.0"
+validators = "^0.35.0"
 requests = "^2.31.0"
 beautifulsoup4 = "^4.12.2"
 
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^6.0.0"
-pytest = "^7.4.0"
+flake8 = "^7.3.0"
+pytest = "^9.0"
 pytest-flask = "^1.2.0"
 pytest-mock = "^3.11.0"
-responses = "^0.23.0"
-pytest-cov = "^4.1.0"
+responses = "^0.25"
+pytest-cov = "^7.0"
 
 [build-system]
 requires = ["poetry-core"]
