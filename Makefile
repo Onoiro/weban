@@ -29,8 +29,8 @@ test-unit:
 test-integration:
 	poetry run pytest -m integration
 
-test-coverage:
-	poetry run pytest --cov=page_analyzer --cov-report=html --cov-report=term
+test-cov:
+	poetry run pytest --cov=page_analyzer --cov-report=xml --cov-report=term
 
 test-watch:
 	poetry run pytest --watch
