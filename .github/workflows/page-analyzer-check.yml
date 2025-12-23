@@ -9,6 +9,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:14
+        env:
+          POSTGRES_DB: weban_test
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     
     strategy:
       matrix:
@@ -34,8 +49,17 @@ jobs:
 
       - name: Lint with flake8
         run: make lint
+      
+      - name: Setup Database Schema
+        env:
+          DATABASE_URL: postgresql://user:password@localhost:5432/weban_test
+        run: |
+          psql $DATABASE_URL -f database.sql
 
       - name: Run tests and collect coverage
+        env:
+          DATABASE_URL: postgresql://user:password@localhost:5432/page_analyzer_test
+          SECRET_KEY: 'test_secret_key'
         run: |
           make test-cov
 
