@@ -58,7 +58,7 @@ jobs:
 
       - name: Run tests and collect coverage
         env:
-          DATABASE_URL: postgresql://user:password@localhost:5432/page_analyzer_test
+          DATABASE_URL: postgresql://user:password@localhost:5432/weban_test
           SECRET_KEY: 'test_secret_key'
         run: |
           make test-cov
