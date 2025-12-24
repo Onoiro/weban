@@ -4,6 +4,7 @@ from unittest.mock import patch, MagicMock
 from datetime import date
 from page_analyzer.app import app
 from page_analyzer.db import add_url
+import psycopg2
 
 
 @pytest.fixture
@@ -17,18 +18,28 @@ def client():
 
 
 @pytest.fixture
-def sample_url_in_db():
-    """Создает тестовый URL в БД перед тестом"""
-    with patch('page_analyzer.db.add_url') as mock_add_url:
-        mock_add_url.return_value = {
-            'id': 1,
-            'name': 'https://example.com',
-            'created_at': date.today()
-        }
+def clean_database():
+    """Очищает БД перед тестом"""
+    database_url = os.getenv('DATABASE_URL')
+    if database_url:
+        conn = psycopg2.connect(database_url)
+        cur = conn.cursor()
         
-        url_data = mock_add_url('https://example.com', date.today())
+        cur.execute("TRUNCATE TABLE url_checks RESTART IDENTITY CASCADE")
+        cur.execute("TRUNCATE TABLE urls RESTART IDENTITY CASCADE")
         
-        yield url_data
+        conn.commit()
+        cur.close()
+        conn.close()
+    
+    yield
+
+
+@pytest.fixture
+def sample_url_in_db(clean_database):
+    """Создает тестовый URL в реальной тестовой БД"""
+    url_data = add_url('https://example.com', date.today())
+    yield url_data
 
 
 @pytest.fixture
