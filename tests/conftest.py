@@ -1,8 +1,9 @@
 import pytest
 import os
 from unittest.mock import patch, MagicMock
-import psycopg2
+from datetime import date
 from page_analyzer.app import app
+from page_analyzer.db import add_url
 
 
 @pytest.fixture
@@ -10,8 +11,24 @@ def client():
     """Фикстура для тестирования Flask приложения"""
     app.config['TESTING'] = True
     app.config['SECRET_KEY'] = 'test-secret-key'
-    with app.test_client() as client:
-        yield client
+    
+    with app.app_context():
+        yield app.test_client()
+
+
+@pytest.fixture
+def sample_url_in_db():
+    """Создает тестовый URL в БД перед тестом"""
+    with patch('page_analyzer.db.add_url') as mock_add_url:
+        mock_add_url.return_value = {
+            'id': 1,
+            'name': 'https://example.com',
+            'created_at': date.today()
+        }
+        
+        url_data = mock_add_url('https://example.com', date.today())
+        
+        yield url_data
 
 
 @pytest.fixture

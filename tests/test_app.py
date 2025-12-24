@@ -28,9 +28,10 @@ class TestUrlsListRoute:
 class TestUrlDetailRoute:
     """Тесты для детальной страницы URL"""
 
-    def test_url_detail_get(self, client):
+    def test_url_detail_get(self, client, sample_url_in_db):
         """Тест GET запроса на детальную страницу URL"""
-        response = client.get('/urls/1')
+        url_id = sample_url_in_db['id']
+        response = client.get(f'/urls/{url_id}')
         
         assert response.status_code == 200
         assert b'<table' in response.data
