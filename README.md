@@ -1,6 +1,9 @@
 [![Actions Status](https://github.com/Onoiro/python-project-83/workflows/hexlet-check/badge.svg)](https://github.com/Onoiro/weban/actions)
 ![WebAnalyzer Actions](https://github.com/Onoiro/weban/actions/workflows/page-analyzer-check.yml/badge.svg)
-[![Maintainability](https://qlty.sh/badges/d5121bbd-7936-477b-84a2-79036a786623/maintainability.svg)](https://qlty.sh/gh/Onoiro/projects/weban)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Onoiro_weban&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Onoiro_weban)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Onoiro_weban&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Onoiro_weban)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Onoiro_weban&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Onoiro_weban)
+<!-- [![Maintainability](https://qlty.sh/badges/d5121bbd-7936-477b-84a2-79036a786623/maintainability.svg)](https://qlty.sh/gh/Onoiro/projects/weban) -->
 
 ## Welcome to [WebAnalyzer](https://weban.2-way.ru)
 Use this application for minimal SEO analysis of websites.
